@@ -11,11 +11,11 @@ exports.up = function(knex) {
             .onDelete("CASCADE")
             .onUpdate("CASCADE")
         classdetail
-            .integer("client_id")
+            .integer("user_id")
             .unsigned()
             .notNullable()
             .references("id")
-            .inTable("clients")
+            .inTable("users")
             .onDelete("CASCADE")
             .onUpdate("CASCADE")
     });

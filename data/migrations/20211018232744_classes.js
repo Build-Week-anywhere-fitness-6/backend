@@ -1,7 +1,7 @@
 
 exports.up = function(knex) {
-    return knex.schema.createTable("classes", function(actions) {
-        classes.increments()
+    return knex.schema.createTable("classes", function(classes) {
+        classes.increments("class")
         classes.string("class_name", 128).notNullable()
         classes.string("type", 128)
         classes.datetime("start_time")
@@ -15,7 +15,7 @@ exports.up = function(knex) {
             .unsigned()
             .notNullable()
             .references("id")
-            .inTable("instructors")
+            .inTable("users")
             .onDelete("CASCADE")
             .onUpdate("CASCADE")
     });
