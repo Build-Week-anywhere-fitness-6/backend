@@ -3,7 +3,7 @@
 Base URL:\
 [to come]\
 Information for connecting to the endpoints  
-<b>Login: /api/fitness/login\</b>
+<b>Login: /api/fitness/login\<b>
 -Username (128 character limit max)\
 -Password (min 6 characters)\
 Register: /api/fitness/register\
