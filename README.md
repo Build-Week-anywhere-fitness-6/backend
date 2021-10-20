@@ -4,15 +4,15 @@
 [to come]
 
 ## Information for connecting to the endpoints  
-### Login: /api/fitness/login\
+### Login: /api/fitness/login
 -Username (128 character limit max)\
--Password (min 6 characters)\
-### Register: /api/fitness/register\
+-Password (min 6 characters)
+### Register: /api/fitness/register
 -Username (128 character limit max)\
--Password (min 6 characters)\
+-Password (min 6 characters)
 ### Logout: /api/fitness/logout  
 
-### Class object shape and fields:\
+### Class object shape and fields:
 "class_name", 128 character limit \
 "type", 128 character limit\
 "start_time", date and time format\
