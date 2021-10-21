@@ -1,16 +1,16 @@
 # backend
 
-## Base URL:\
-[to come]
+## Base URL:
+https://anywhere-fitness-6.herokuapp.com
 
 ## Information for connecting to the endpoints  
-### Login: /api/fitness/login
+### Login: /api/auth/login
 -Username (128 character limit max)\
 -Password (min 6 characters)
-### Register: /api/fitness/register
+### Register: /api/auth/register
 -Username (128 character limit max)\
 -Password (min 6 characters)
-### Logout: /api/fitness/logout  
+### Logout: /api/auth/logout  
 
 ### Class object shape and fields:
 "class_name", 128 character limit \

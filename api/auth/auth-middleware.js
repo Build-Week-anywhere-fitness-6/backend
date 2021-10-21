@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const { findBy } = require('../api/fitness-model')
+const { findBy } = require('./auth-model')
 
 const restricted = async (req, res, next) => {
     const token = req.headers.token

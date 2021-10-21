@@ -1,4 +1,4 @@
-const { validatePassword, validateUsername } = require("./fitness-middleware");
+const { validatePassword, validateUsername } = require("./auth-middleware");
 
 const router = require("express").Router();
 
