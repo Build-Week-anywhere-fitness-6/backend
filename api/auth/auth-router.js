@@ -32,7 +32,24 @@ router.post('/register', checkUsernameFree,  (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
-    res.send('this is a logout page') 
+  if (req.session.user) {
+    req.session.destroy((err) => {
+      if (err) {
+        res.json({
+          message: 'you cannot leave!'
+        })
+      } else {
+        // set a cookie in the past
+        res.json({
+          message: 'logged out'
+        })
+      }
+    })
+  } else {
+    res.json({
+       message: 'no session'
+    })
+  }
 })
 
 function buildToken (user) {
