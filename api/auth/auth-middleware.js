@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken')
-const { findBy } = require('./auth-model')
+const Users = require('./auth-model')
+
 
 const restricted = async (req, res, next) => {
     const token = req.headers.token
@@ -58,8 +59,42 @@ const validateUsername = async (req, res, next) => {
             next(err)
         }    
     }
-}
+
+    const checkUsernameFree = async (req, res, next) => {
+
+        const name = req.body.username
+        const users = await Users.find()
+        const exists = users.find( user => user.username === name)
+        if(exists){
+          res.status(422).json({message: "Username taken" })
+        } else {
+          next()
+        }
+      }
+
+      const checkUsernameExists = async (req, res, next) => {
+      
+        try {
+          const user = await Users.findBy({ username: req.body.username }).first()
+          
+          if (!user) {
+      
+            res.status(401).json({ message: "Invalid credentials" })
+      
+          } else {
+      
+            req.user = user
+            next()
+          }
+      
+        } catch (err) {
+      
+          next(err)
+      
+        }
+      
+      }
 
 module.exports = {
-    checkUsernameExists, restricted, only, validatePassword, validateUsername
+    checkUsernameExists, restricted, only, validatePassword, validateUsername, checkUsernameFree
 }
