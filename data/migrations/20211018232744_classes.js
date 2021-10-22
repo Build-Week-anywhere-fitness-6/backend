@@ -1,7 +1,7 @@
 
 exports.up = function(knex) {
     return knex.schema.createTable("classes", function(classes) {
-        classes.increments("class")
+        classes.increments("class_id")
         classes.string("class_name", 128).notNullable()
         classes.string("type", 128)
         classes.datetime("start_time")
