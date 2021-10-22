@@ -1,4 +1,10 @@
-const { validatePassword, validateUsername } = require("./auth-middleware");
+const bcrypt = require("bcryptjs/dist/bcrypt");
+const { 
+  validatePassword, 
+  validateUsername,
+  checkUsernameExists } = require("./auth-middleware");
+  const bcrypt = require('bcryptjs');
+  const Users = require('./auth-model')
 
 const router = require("express").Router();
 
@@ -12,8 +18,17 @@ router.post('/login', validatePassword, validateUsername, (req, res) => {
 })
 
 
-router.post('/register', (req, res) => {
-    res.send('this is a register page') 
+router.post('/register', checkUsernameFree,  (req, res) => {
+    
+  const { username, password } = req.body
+
+  const hash = bcrypt.hashSync(password, 8)
+  Users.add({ username, password: hash, role_name: req.role_name})
+  .then(newUser => {
+    res.status(201).json(newUser)
+  })
+    res.status(500).json({message: 'New User could not be made'})
+  
 })
 
 router.get('/logout', (req, res) => {
